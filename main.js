@@ -43,9 +43,9 @@ let valorVenta =  valorProductos(precio,15);
 alert("Total de la compra con el 15% off"+ " " + valorVenta);*/
 
 /*class clientes {
-    constructor(nombre, tipo, edad) {
+    constructor(nombre, genero, edad) {
         this.nombre = nombre;
-        this.tipo = tipo;
+        this.genero = genero;
         this.edad = edad;
     }
 }
@@ -58,7 +58,7 @@ const nuevoCliente = () => {
     let contacto = prompt("Por que medio nos contacto?");
 
     let mascota = new Cliente (nombre, edad, contacto);
-    listaMascotas.push(clientes);
+    listaClientes.push(clientes);
     localStorage.setItem("clientes",JSON.stringify(listaClientes))
 }*/
 class Producto{
@@ -85,6 +85,10 @@ const productos =[hidratante, antiage , limpieza, reparadora, serum, hyaluronico
 
 //array del carrito
 let carrito = [];
+/**carga de carrito**/
+if(localStorage.getItem("carrito")){
+    carrito =JSON.parse(localStorage.getItem("carrito"));
+}
 
 //modificacion de DOM
  const contenedorProducto = document.getElementById("contenedorProductos");
@@ -124,7 +128,10 @@ let carrito = [];
     } else{
         const producto = productos.find(producto => producto.id === id);
         carrito.push(producto);
+        //localStorage
+        localStorage.setItem("carrito",JSON.stringify(carrito));
     }
+    calcularTotal();
  }
 
  //ver el carrito
@@ -162,7 +169,7 @@ let carrito = [];
         })
 
     })
-    
+    calcularTotal();
  }
  //función que elimina el producto del carrito
  const eliminarDelCarrito = (id) => {
@@ -170,6 +177,8 @@ let carrito = [];
     const indice = carrito.indexOf(producto);
     carrito.splice(indice, 1);
     mostrarCarrito();
+    //localStorage
+    localStorage.setItem("carrito",JSON.stringify(carrito));
  }  
 // vaciar carrito completo
 const vaciarCarrito =document.getElementById("vaciarCarrito");
@@ -182,4 +191,14 @@ vaciarCarrito.addEventListener("click",() =>{
 const eliminarTodoElcarrito = () => {
     carrito= []
     mostrarCarrito();
+    //localStorage
+    localStorage.clear();
+}
+//total de la compra
+const calcularTotal = () => {
+    let totalCompra = 0;
+    carrito.forEach(producto => {
+        totalCompra += producto.precio * producto.cantidad;
+    })
+    total.innerHTML =`Total: $${totalCompra}`;
 }

@@ -35,7 +35,7 @@ header h1 {
   text-align: left; }
 
 main .ubicacion {
-  background-image: url("/imagenes/flower.jpg"); }
+  background-image: url("/img/flower.jpg"); }
   main .ubicacion section h2 {
     color: #807672;
     text-align: center;
@@ -44,7 +44,7 @@ main .ubicacion {
     margin-block-end: 50px; }
 
 main .formulario {
-  background-image: url("/imagenes/flower.jpg"); }
+  background-image: url("/img/flower.jpg"); }
   main .formulario h2 {
     color: #807672;
     text-align: center;

@@ -42,7 +42,7 @@ let precio= parseInt(prompt("Ingrese el total de su compra para acceder al descu
 let valorVenta =  valorProductos(precio,15);
 alert("Total de la compra con el 15% off"+ " " + valorVenta);*/
 
-/*class clientes {
+class clientes {
     constructor(nombre, genero, edad) {
         this.nombre = nombre;
         this.genero = genero;
@@ -57,10 +57,10 @@ const nuevoCliente = () => {
     let edad = prompt("Que edad tiene?");
     let contacto = prompt("Por que medio nos contacto?");
 
-    let mascota = new Cliente (nombre, edad, contacto);
+    let cliente = new Cliente (nombre, edad, contacto);
     listaClientes.push(clientes);
     localStorage.setItem("clientes",JSON.stringify(listaClientes))
-}*/
+}
 class Producto{
     constructor(id, nombre, precio, img){
         this.id = id;
@@ -70,7 +70,7 @@ class Producto{
         this.cantidad = 1;
     }
 }
-
+/**carrito de compras **/
 const hidratante = new Producto (1,"Crema hidratante enzimatica",2000,"img/crema.png");
 const antiage = new Producto(2," Crema Antiage",6000,"img/antiage.png");
 const limpieza = new Producto (3,"Gel de limpieza con vitamina C", 3600, "img/geldelimpieza.png");
@@ -202,3 +202,4 @@ const calcularTotal = () => {
     })
     total.innerHTML =`Total: $${totalCompra}`;
 }
+
